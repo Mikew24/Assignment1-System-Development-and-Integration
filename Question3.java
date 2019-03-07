@@ -43,6 +43,7 @@ import javafx.scene.control.ComboBox;
 
 import javax.swing.*;
 public class Question3 extends Application {
+    //function to create the random points to start with
     public Point2D[] genRandomPoints(Circle c){
         double p1 = Math.random()*(2.0*Math.PI);
         System.out.println(p1);
@@ -59,11 +60,12 @@ public class Question3 extends Application {
 
 //THis code is really sloppy I was rushing to finish this question so i did not compartmentalize my code very well and mostly copy and pasting instead of opting in for methods/classes etc
     public void start(Stage s){
+        //connecting lines
         Line A = new Line();
         Line B = new Line();
         Line C = new Line();
         Pane p = new Pane();
-
+        //creating the drag circles and Main circle
         Circle Circles[] = {new Circle(400,50,10),new Circle(50,300,10),new Circle(600,300,10)};
         Circle MainC = new Circle();
         MainC.setFill(Color.WHITE);
@@ -71,8 +73,9 @@ public class Question3 extends Application {
         MainC.setRadius(300);
         MainC.setCenterX(400);
         MainC.setCenterY(300);
+        //getting points
         Point2D AP[] =genRandomPoints(MainC);
-
+        //setting up circles to be connected
         Circles[0].setCenterX(AP[0].getX());
         Circles[1].setCenterX(AP[1].getX());
         Circles[2].setCenterX(AP[2].getX());
@@ -96,6 +99,7 @@ public class Question3 extends Application {
         A.setEndY(AP[1].getY());
         B.setEndY(AP[2].getY());
         C.setEndY(AP[0].getY());
+        //getting angles to display
         double[] lines= new double[3];
         double[] Angles = new double[3];
         Text anglesT[] = {new Text(),new Text(),new Text()};
@@ -111,6 +115,7 @@ public class Question3 extends Application {
             anglesT[x].setText(String.format("%.2f",Math.toDegrees(Angles[x])));
 
         }
+        //basically just some of the code above to update the other points and angles where the user drags the circle. for all three set on mouse dragged
         Circles[2].setOnMouseDragged(e->{
             double mX=e.getX();
             double mY=e.getY();
@@ -245,9 +250,11 @@ public class Question3 extends Application {
 
             }
                 });
-        //Scene Control
+        //adding pane children to be displayed
         p.getChildren().addAll(MainC,A,B,C,Circles[0],Circles[1],Circles[2],anglesT[0],anglesT[1],anglesT[2]);
+        //setting up scene
         Scene sc = new Scene(p,800,800);
+        //displaying scene to user
         s.setScene(sc);
         s.setTitle("Question3");
         s.show();

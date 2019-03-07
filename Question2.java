@@ -50,6 +50,8 @@ public class Question2 extends Application {
         InvestCalc.addRow(3,futureVL,futureV);
         InvestCalc.add(cal,1,4);
         s.setTitle("Question2");
+        //button event so if the input is incorrect it will catch it and not just crash the program but also produce
+        //the right output if given a valid input
         cal.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -64,6 +66,7 @@ public class Question2 extends Application {
                 }
             }
         });
+        //setting scene and displaying
        Scene news = new Scene(InvestCalc);
        s.setScene(news);
        s.show();

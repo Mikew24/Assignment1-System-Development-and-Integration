@@ -23,6 +23,7 @@ import javafx.scene.image.Image;
 public class Question1 extends Application {
     @Override
     public void start(Stage s){
+        //getting and storing the cards in a arraylist
         ArrayList<Image> cards=new ArrayList<>();
         for(int x = 1;x<=54;x++){
             String string=Integer.toString(x);
@@ -30,7 +31,9 @@ public class Question1 extends Application {
             cards.add(adding);
         }
         System.out.println("Done");
+        //shuffle cards so output will b random
         Collections.shuffle(cards);
+        //setting up scenes and panes so the cards will display
         HBox g = new HBox();
         ImageView a = new ImageView(cards.get(0));
         ImageView b = new ImageView(cards.get(1));
